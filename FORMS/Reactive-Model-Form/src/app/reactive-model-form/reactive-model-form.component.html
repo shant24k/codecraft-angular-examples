@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Reactive Model Form</h1>
+  <input type="search"
+        class="form-control"
+        placeholder="Please enter search term"
+        [formControl]="searchField">
+  <hr/>
+  <ul>
+    <li *ngFor="let search of searches">{{ search }}</li>
+  </ul>
+</div>
