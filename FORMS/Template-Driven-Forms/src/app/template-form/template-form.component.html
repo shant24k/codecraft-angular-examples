@@ -1,0 +1,74 @@
+<div class="container">
+  <h1>Template driven Form</h1>
+  <!--suppress ALL -->
+  <form novalidate #f="ngForm" (ngSubmit)="onSubmit()">
+
+    <fieldset ngModelGroup="name">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text"
+               class="form-control"
+               name="firstName"
+               [(ngModel)]="model.firstName"
+               required>
+      </div>
+  
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text"
+               class="form-control">
+      </div>
+    </fieldset>
+  
+  
+    <div class="form-group"
+         [ngClass]="{
+      'has-danger': email.invalid && (email.dirty || email.touched),
+      'has-success': email.valid && (email.dirty || email.touched)
+    }">
+      <label>Email</label>
+      <input type="email"
+             class="form-control"
+             name="email"
+             [(ngModel)]="model.email"
+             pattern="[^ @]*@[^ @]*"
+             #email="ngModel"
+             required>
+      <div class="form-control-feedback"
+             *ngIf="email.errors && (email.dirty || email.touched)">
+          <p *ngIf="email.errors.required">Email is required</p>
+          <p *ngIf="email.errors.pattern">Email must contain at least the @ character</p>
+      </div>
+      <pre>Valid? {{f.form.controls.email?.valid}}</pre>
+      <pre>Dirty? {{f.form.controls.email?.dirty}}</pre>
+      <pre>Touched? {{f.form.controls.email?.touched}}</pre>
+    </div>
+  
+  
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" name="password"
+             class="form-control"
+             minlength="8" [(ngModel)]="model.password">
+    </div>
+  
+    <div class="form-group">
+      <label>Language</label>
+      <select class="form-control"
+              name="language">
+        <option value="">Please select a language</option>
+        <option *ngFor="let lang of langs"
+                [value]="lang">{{lang}}
+        </option>
+      </select>
+    </div>
+  
+    <button type="submit"
+            class="btn btn-primary">Submit
+    </button>
+  
+    <pre>{{ f.value | json }}</pre>
+    <pre>{{ model | json }}</pre>
+  
+  </form>
+</div>

@@ -1,0 +1,8 @@
+
+.has-danger input {
+    border-color: red;
+}
+
+.has-success input {
+    border-color: green;
+}
