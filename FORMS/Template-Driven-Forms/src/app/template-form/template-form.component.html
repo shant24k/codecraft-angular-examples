@@ -21,11 +21,7 @@
     </fieldset>
   
   
-    <div class="form-group"
-         [ngClass]="{
-      'has-danger': email.invalid && (email.dirty || email.touched),
-      'has-success': email.valid && (email.dirty || email.touched)
-    }">
+    <div class="form-group">
       <label>Email</label>
       <input type="email"
              class="form-control"
@@ -33,8 +29,12 @@
              [(ngModel)]="model.email"
              pattern="[^ @]*@[^ @]*"
              #email="ngModel"
-             required>
-      <div class="form-control-feedback"
+             required
+             [ngClass]="{
+              'is-invalid': email.invalid && (email.dirty || email.touched),
+              'is-valid': email.valid && (email.dirty || email.touched)
+            }">
+      <div class="invalid-feedback"
              *ngIf="email.errors && (email.dirty || email.touched)">
           <p *ngIf="email.errors.required">Email is required</p>
           <p *ngIf="email.errors.pattern">Email must contain at least the @ character</p>
