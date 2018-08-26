@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Observable} from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { SearchItem } from './search-item'
 import {
   map,
@@ -30,7 +30,7 @@ export class AppComponent  {
       debounceTime(400),
       distinctUntilChanged(),
       tap(_ => (this.loading = true)),
-      switchMap(term => this.itunes.search(term)),
+      switchMap((term) => term ? this.itunes.search(term) : of([])),
       tap(_ => (this.loading = false))
     );
   }
