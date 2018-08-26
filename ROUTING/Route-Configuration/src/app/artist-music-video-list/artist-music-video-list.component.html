@@ -1,0 +1,10 @@
+<ul class="list-group">
+	<p *ngIf="showLoader">Loading...</p>
+	<li class="list-group-item"
+	    *ngFor="let video of videos">
+		<img src="{{video.artworkUrl60}}">
+		<a target="_blank"
+		   href="{{video.previewUrl}}">{{ video.trackName }}
+		</a>
+	</li>
+</ul>
