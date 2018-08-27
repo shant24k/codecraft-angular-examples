@@ -10,9 +10,11 @@ export class CardHoverDirective {
     querySelector: ".card-text"
   };
 
-  @HostBinding("class.card-outline-primary") private ishovering: boolean;
+  @HostBinding("class.border-success") private ishovering: boolean;
 
-  constructor(private el: ElementRef, private renderer: Renderer) {}
+  constructor(private el: ElementRef, private renderer: Renderer) {
+    renderer.setElementStyle(el.nativeElement, 'backgroundColor', '#ebebeb'); 
+  }
 
   @HostListener("mouseover")
   onMouseOver() {
