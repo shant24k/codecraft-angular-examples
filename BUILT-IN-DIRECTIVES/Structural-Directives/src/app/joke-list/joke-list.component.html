@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Structural Directives</h1>
+  <ng-template ngFor
+            let-j
+            [ngForOf]="jokes">
+    <app-joke [joke]="j"></app-joke>
+  </ng-template>
+</div>

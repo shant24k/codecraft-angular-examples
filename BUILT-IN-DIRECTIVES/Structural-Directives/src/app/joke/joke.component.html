@@ -1,0 +1,13 @@
+<div class="card card-body">
+  <h4 class="card-title">
+    {{ data.setup }}
+  </h4>
+  <ng-template [ngIf]="!data.hide">
+    <p class="card-text">
+    {{ data.punchline }}
+  </p>
+  </ng-template>
+  <button class="btn btn-primary"
+          (click)="data.toggle()">Tell Me
+  </button>
+</div>
